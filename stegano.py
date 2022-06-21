@@ -3,11 +3,7 @@ from PIL import Image
 import os.path
 
 def encode_image(img, msg):
-    """
-    use the red portion of an image (r, g, b) tuple to
-    hide the msg string characters as ASCII values
-    red value of the first pixel is used for length of string
-    """
+    
     length = len(msg)
     # limit length of message to 255
     if length > 255:
@@ -36,10 +32,7 @@ def encode_image(img, msg):
     return encoded
 
 def decode_image(img):
-    """
-    check the red portion of an image (r, g, b) tuple for
-    hidden message characters (ASCII values)
-    """
+    
     width, height = img.size
     msg = ""
     index = 0
@@ -114,35 +107,7 @@ banner= '''\033[92m
 \033[95mlink: https://youtube.com/channel/UC9mBBFxkVWsTtLyuHUjvdbg\033[00m
 '''
 print(banner)
-'''original_image_file = "Pic.png"
 
-img = Image.open(original_image_file)
-print(img, img.mode)  # test
-write_key()
-encoded_image_file = "enc_" + original_image_file
-
-# don't exceed 255 characters in the message
-secret_msg = "this is a secret message added to the image"
-secret_file=encrypt("hello.txt",load_key())
-print(secret_file)
-with open("encoded.txt") as f:
-    secret_msg=f.read()
-img_encoded = encode_image(img,secret_msg)
-if img_encoded:
-    # save the image with the hidden text
-    img_encoded.save(encoded_image_file)
-    print("{} saved!".format(encoded_image_file))
-
-    # get the hidden text back ...
-    img2 = Image.open(encoded_image_file)
-    hidden_text = decode_image(img2)
-    decrypted_text=decrypt("encoded.txt",load_key())
-    print(decrypted_text)
-    with open('retrived.txt', 'wb') as file:
-        file.write(decrypted_text)
-    print("Hidden text:\n{}".format(decrypted_text))
-
-'''
 print("1.ENCODE TEXT INTO IMAGE\n2.DECODE TEXT FROM IMAGE\n")
 try:
     input1=int(input("choose method :"))
