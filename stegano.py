@@ -156,7 +156,7 @@ try:
                 print("Hidden text:\n{}".format(hidden_text)) 
 except ValueError:
     print("not a valid input")
-#encrypt("hello.txt",load_key())
+
 
 
 
