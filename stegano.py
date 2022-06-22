@@ -115,6 +115,7 @@ try:
         original_image_file=input("choose image : ")
         if os.path.exists(original_image_file):
             encoded_image_file = "enc_" + original_image_file
+           
             text=input("enter text : ")
             print("Do you want to encrypt text")
             is_encrypt=input("y/n : ")
@@ -124,14 +125,14 @@ try:
                 encrypted_text=openfile("encoded.txt")
                 img = Image.open(original_image_file)
                 img_encoded = encode_image(img,encrypted_text)
-                img_encoded.save(encoded_image_file)
-                print("{} saved!".format(encoded_image_file))
+                img_encoded.save("encode_image.png")
+                print("{} saved!".format("encoded_image.png"))
                 os.remove("encoded.txt")
             else:
                 img = Image.open(original_image_file)
                 img_encoded = encode_image(img,text)
-                img_encoded.save(encoded_image_file)
-                print("{} saved!".format(encoded_image_file))
+                img_encoded.save("encoded_image.png")
+                print("{} saved!".format("encoded_image.png"))
         else :
             print("image was not found")
     elif input1==2:
@@ -154,6 +155,8 @@ try:
                     file.write(hidden_text)
                     print("retrived.txt saved!")
                 print("Hidden text:\n{}".format(hidden_text)) 
+        else:
+            print("image does not exist")
 except ValueError:
     print("not a valid input")
 
